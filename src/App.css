@@ -1,0 +1,13 @@
+body {
+  height: 90vh;
+  background-image: url("https://thumbs.dreamstime.com/z/empty-to-do-list-laptop-cup-coffee-white-background-150126862.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.95;
+}
+
+.container {
+  background-color: rgb(250, 250, 250);
+}

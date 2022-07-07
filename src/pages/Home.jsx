@@ -47,11 +47,28 @@ const Home = () => {
   };
 
   //! Edite Data
+  const editData = async (id, title, desc) => {
+    const filtered = tutorial
+      .filter((item) => item.id === id)
+      .map((item) => ({ title: title, description: desc }));
+    console.log(filtered);
+
+    try {
+      await axios.put(`${URL}/${id}`, filtered[0]);
+    } catch (error) {
+      alert(error);
+    }
+    getData();
+  };
 
   return (
     <div>
       <AddTutotrial postData={postData} />
-      <Tutorials tutorial={tutorial} deleteData={deleteData} />
+      <Tutorials
+        tutorial={tutorial}
+        deleteData={deleteData}
+        editData={editData}
+      />
     </div>
   );
 };

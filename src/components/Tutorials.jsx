@@ -1,8 +1,9 @@
 import React from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
+import EditTutorial from "./EditTutorial";
 
-const Tutorials = ({ tutorial, deleteData }) => {
+const Tutorials = ({ tutorial, deleteData, editData }) => {
   // console.log(tutorial);
 
   return (
@@ -26,8 +27,13 @@ const Tutorials = ({ tutorial, deleteData }) => {
                 <td>{title}</td>
                 <td>{description}</td>
                 <td>
-                  {/* set buttons */}
-                  <FiEdit className="text-warning" role="button" />
+                  <FiEdit
+                    data-bs-toggle="modal"
+                    data-bs-target="#edit-modal"
+                    className="text-warning"
+                    role="button"
+                    onClick={() => editData(id, "deneme", "test")}
+                  />
                   {"  "}
                   <BsFillTrashFill
                     className="text-danger"
@@ -40,6 +46,7 @@ const Tutorials = ({ tutorial, deleteData }) => {
           })}
         </tbody>
       </table>
+      {/* <EditTutorial /> */}
     </div>
   );
 };

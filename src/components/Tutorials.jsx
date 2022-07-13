@@ -2,9 +2,11 @@ import React from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import EditTutorial from "./EditTutorial";
+import { useState } from "react";
 
 const Tutorials = ({ tutorial, deleteData, editData }) => {
   // console.log(tutorial);
+  const [editItem, setEditItem] = useState("");
 
   return (
     <div className="container text-center">
@@ -19,20 +21,20 @@ const Tutorials = ({ tutorial, deleteData, editData }) => {
         </thead>
         {/* mapped all items with properties */}
         <tbody className="">
-          {tutorial?.map((item) => {
+          {tutorial?.map((item, key) => {
             const { id, title, description } = item;
             return (
-              <tr>
+              <tr key={key}>
                 <th scope="row">{id} </th>
                 <td>{title}</td>
                 <td>{description}</td>
-                <td>
+                <td className="text-nowrap">
                   <FiEdit
                     data-bs-toggle="modal"
                     data-bs-target="#edit-modal"
                     className="text-warning"
                     role="button"
-                    onClick={() => editData(id, "deneme", "test")}
+                    onClick={() => setEditItem(item)}
                   />
                   {"  "}
                   <BsFillTrashFill
@@ -46,7 +48,7 @@ const Tutorials = ({ tutorial, deleteData, editData }) => {
           })}
         </tbody>
       </table>
-      {/* <EditTutorial /> */}
+      <EditTutorial editData={editData} editItem={editItem} />
     </div>
   );
 };

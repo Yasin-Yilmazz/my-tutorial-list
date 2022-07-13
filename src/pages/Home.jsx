@@ -46,15 +46,10 @@ const Home = () => {
     getData();
   };
 
-  //! Edite Data
+  //! Edit Data
   const editData = async (id, title, desc) => {
-    const filtered = tutorial
-      .filter((item) => item.id === id)
-      .map((item) => ({ title: title, description: desc }));
-    console.log(filtered);
-
     try {
-      await axios.put(`${URL}/${id}`, filtered[0]);
+      await axios.put(`${URL}/${id}`, { title, description: desc });
     } catch (error) {
       alert(error);
     }
